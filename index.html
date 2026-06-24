@@ -10,13 +10,11 @@
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
 </head>
 
 <body>
 
-<!-- APP HEADER -->
-
+<!-- HEADER -->
 <header class="app-header">
 
 <div class="app-title">
@@ -31,13 +29,9 @@ WeatherPro
 </header>
 
 <!-- SEARCH -->
-
 <section class="search-section">
 
-<input
-type="text"
-id="cityInput"
-placeholder="Search city...">
+<input type="text" id="cityInput" placeholder="Search city...">
 
 <button id="searchBtn">
 <i class="fas fa-search"></i>
@@ -46,33 +40,23 @@ placeholder="Search city...">
 </section>
 
 <!-- MAIN WEATHER CARD -->
-
 <section class="hero-card">
 
 <div class="city-row">
 
-<h2 id="cityName">
-Kathmandu
-</h2>
+<h2 id="cityName">Kathmandu</h2>
 
-<div id="weatherIcon" class="hero-icon">
-☀️
-</div>
+<div id="weatherIcon" class="hero-icon">☀️</div>
 
 </div>
 
-<h1 id="temperature">
---°C
-</h1>
+<h1 id="temperature">--°C</h1>
 
-<p id="description">
-Loading weather...
-</p>
+<p id="description">Loading weather...</p>
 
 </section>
 
-<!-- TODAY DETAILS -->
-
+<!-- TODAY DETAILS (ONLY ONCE - FIXED) -->
 <section class="details-grid">
 
 <div class="detail-card">
@@ -100,138 +84,66 @@ Loading weather...
 </div>
 
 </section>
-
-<!-- HOURLY -->
 
 <!-- TODAY PAGE -->
-
-<div id="todayPage">
-
-<section class="details-grid">
-
-<div class="detail-card">
-<span>🌡️</span>
-<h4>Feels Like</h4>
-<p id="feelsLike">--°</p>
-</div>
-
-<div class="detail-card">
-<span>💧</span>
-<h4>Humidity</h4>
-<p id="humidity">--%</p>
-</div>
-
-<div class="detail-card">
-<span>💨</span>
-<h4>Wind</h4>
-<p id="wind">-- km/h</p>
-</div>
-
-<div class="detail-card">
-<span>🌧️</span>
-<h4>Rain</h4>
-<p id="rain">--%</p>
-</div>
-
-</section>
-
-</div>
+<div id="todayPage"></div>
 
 <!-- HOURLY PAGE -->
-
 <div id="hourlyPage" style="display:none;">
-
 <section class="section">
-
-<div class="section-title">
-Hourly Forecast
-</div>
-
-<div id="hourlyForecast"
-class="hourly-scroll">
-</div>
-
+<div class="section-title">Hourly Forecast</div>
+<div id="hourlyForecast" class="hourly-scroll"></div>
 </section>
-
 </div>
 
 <!-- DAILY PAGE -->
-
 <div id="dailyPage" style="display:none;">
-
 <section class="section">
-
-<div class="section-title">
-7 Day Forecast
-</div>
-
+<div class="section-title">7 Day Forecast</div>
 <div id="dailyForecast"></div>
-
 </section>
-
 </div>
 
 <!-- RADAR PAGE -->
-
 <div id="radarPage" style="display:none;">
-
 <section class="section">
-
-<div class="section-title">
-Weather Radar
-</div>
-
-<div class="forecast-card">
-Radar map coming soon
-</div>
-
+<div class="section-title">Weather Radar</div>
+<div class="forecast-card">Radar map coming soon</div>
 </section>
-
 </div>
 
 <!-- CLIMATE PAGE -->
-
 <div id="climatePage" style="display:none;">
-
 <section class="section">
-
-<div class="section-title">
-Climate Statistics
-</div>
-
-<div class="forecast-card">
-Climate information coming soon
-</div>
-
+<div class="section-title">Climate Statistics</div>
+<div class="forecast-card">Climate information coming soon</div>
 </section>
-
 </div>
 
 <!-- BOTTOM NAV -->
-
 <nav class="bottom-nav">
 
-<button class="nav-item active">
+<button class="nav-item active" data-page="todayPage">
 <i class="fas fa-sun"></i>
 <span>Today</span>
 </button>
 
-<button class="nav-item">
+<button class="nav-item" data-page="hourlyPage">
 <i class="fas fa-clock"></i>
 <span>Hourly</span>
 </button>
 
-<button class="nav-item">
+<button class="nav-item" data-page="dailyPage">
 <i class="fas fa-calendar"></i>
 <span>Daily</span>
 </button>
 
-<button class="nav-item">
+<button class="nav-item" data-page="radarPage">
 <i class="fas fa-satellite"></i>
 <span>Radar</span>
 </button>
 
-<button class="nav-item">
+<button class="nav-item" data-page="climatePage">
 <i class="fas fa-chart-line"></i>
 <span>Climate</span>
 </button>
@@ -241,4 +153,4 @@ Climate information coming soon
 <script src="script.js"></script>
 
 </body>
-</html>
+  </html>
