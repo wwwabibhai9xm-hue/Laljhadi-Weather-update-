@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Weather Pro</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- TOP HEADER -->
+
+<header class="topbar">
+
+<div class="logo">
+<i class="fas fa-sun"></i>
+<span>WeatherPro</span>
+</div>
+
+<div class="header-actions">
+
+<button id="searchToggle">
+<i class="fas fa-search"></i>
+</button>
+
+<button id="menuBtn">
+<i class="fas fa-bars"></i>
+</button>
+
+</div>
+
+</header>
+
+<!-- SEARCH BAR -->
+
+<div class="search-container">
+
+<input
+type="text"
+id="cityInput"
+placeholder="Search city...">
+
+<button id="searchBtn">
+Search
+</button>
+
+</div>
+
+<!-- CURRENT WEATHER -->
+
+<section class="current-weather">
+
+<h2 id="cityName">Loading...</h2>
+
+<div class="temp-row">
+
+<div class="big-temp"
+id="temperature">
+--°C
+</div>
+
+<div class="weather-icon"
+id="weatherIcon">
+☀️
+</div>
+
+</div>
+
+<p id="description">
+Loading weather...
+</p>
+
+</section>
+
+<!-- DAILY FORECAST -->
+
+<section class="forecast-section">
+
+<h3>7-Day Forecast</h3>
+
+<div id="dailyForecast">
+
+<!-- JS WILL INSERT FORECAST HERE -->
+
+</div>
+
+</section>
+
+<!-- BOTTOM NAVIGATION -->
+
+<nav class="bottom-nav">
+
+<button class="nav-item">
+<i class="fas fa-sun"></i>
+<span>Today</span>
+</button>
+
+<button class="nav-item">
+<i class="fas fa-clock"></i>
+<span>Hourly</span>
+</button>
+
+<button class="nav-item active">
+<i class="fas fa-calendar"></i>
+<span>Daily</span>
+</button>
+
+<button class="nav-item">
+<i class="fas fa-satellite-dish"></i>
+<span>Radar</span>
+</button>
+
+<button class="nav-item">
+<i class="fas fa-chart-line"></i>
+<span>Climate</span>
+</button>
+
+</nav>
+
+<script src="script.js"></script>
+
+</body>
+</html>
