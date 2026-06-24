@@ -81,15 +81,29 @@ Loading weather...
 
 <!-- DAILY FORECAST -->
 
-<section class="forecast-section">
+<section id="todaySection" class="forecast-section">
+
+<h3>Today's Weather</h3>
+
+<p id="todayInfo">
+Current weather conditions
+</p>
+
+</section>
+
+<section id="hourlySection" class="forecast-section hidden">
+
+<h3>Hourly Forecast</h3>
+
+<div id="hourlyForecast"></div>
+
+</section>
+
+<section id="dailySection" class="forecast-section">
 
 <h3>7-Day Forecast</h3>
 
-<div id="dailyForecast">
-
-<!-- JS WILL INSERT FORECAST HERE -->
-
-</div>
+<div id="dailyForecast"></div>
 
 </section>
 
