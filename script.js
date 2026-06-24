@@ -1,3 +1,4 @@
+alert("Script loaded!");
 // ===============================
 // WEATHERPRO V2 - PAGE SWITCHING
 // ===============================
