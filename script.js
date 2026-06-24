@@ -229,6 +229,36 @@ window.onload = () => {
     getWeatherByCity("Kathmandu");
 
 };
+const pages = {
+    0: document.getElementById("todayPage"),
+    1: document.getElementById("hourlyPage"),
+    2: document.getElementById("dailyPage"),
+    3: document.getElementById("radarPage"),
+    4: document.getElementById("climatePage")
+};
+
+const navItems = document.querySelectorAll(".nav-item");
+
+navItems.forEach((btn,index)=>{
+
+    btn.addEventListener("click",()=>{
+
+        navItems.forEach(item=>{
+            item.classList.remove("active");
+        });
+
+        btn.classList.add("active");
+
+        Object.values(pages).forEach(page=>{
+            page.style.display="none";
+        });
+
+        pages[index].style.display="block";
+
+    });
+
+});
+
 const navItems = document.querySelectorAll(".nav-item");
 
 navItems.forEach((item) => {
