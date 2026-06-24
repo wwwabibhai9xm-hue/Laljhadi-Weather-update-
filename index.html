@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Weather Pro</title>
+<title>WeatherPro V2</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -15,32 +15,24 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
 <body>
 
-<!-- TOP HEADER -->
+<!-- APP HEADER -->
 
-<header class="topbar">
+<header class="app-header">
 
-<div class="logo">
-<i class="fas fa-sun"></i>
-<span>WeatherPro</span>
+<div class="app-title">
+<i class="fas fa-cloud-sun"></i>
+WeatherPro
 </div>
 
-<div class="header-actions">
-
-<button id="searchToggle">
-<i class="fas fa-search"></i>
-</button>
-
-<button id="menuBtn">
+<button class="menu-btn">
 <i class="fas fa-bars"></i>
 </button>
 
-</div>
-
 </header>
 
-<!-- SEARCH BAR -->
+<!-- SEARCH -->
 
-<div class="search-container">
+<section class="search-section">
 
 <input
 type="text"
@@ -48,30 +40,30 @@ id="cityInput"
 placeholder="Search city...">
 
 <button id="searchBtn">
-Search
+<i class="fas fa-search"></i>
 </button>
 
-</div>
+</section>
 
-<!-- CURRENT WEATHER -->
+<!-- MAIN WEATHER CARD -->
 
-<section class="current-weather">
+<section class="hero-card">
 
-<h2 id="cityName">Loading...</h2>
+<div class="city-row">
 
-<div class="temp-row">
+<h2 id="cityName">
+Kathmandu
+</h2>
 
-<div class="big-temp"
-id="temperature">
---°C
-</div>
-
-<div class="weather-icon"
-id="weatherIcon">
+<div id="weatherIcon" class="hero-icon">
 ☀️
 </div>
 
 </div>
+
+<h1 id="temperature">
+--°C
+</h1>
 
 <p id="description">
 Loading weather...
@@ -79,39 +71,68 @@ Loading weather...
 
 </section>
 
-<!-- DAILY FORECAST -->
+<!-- TODAY DETAILS -->
 
-<section id="todaySection" class="forecast-section">
+<section class="details-grid">
 
-<h3>Today's Weather</h3>
+<div class="detail-card">
+<span>🌡️</span>
+<h4>Feels Like</h4>
+<p id="feelsLike">--°</p>
+</div>
 
-<p id="todayInfo">
-Current weather conditions
-</p>
+<div class="detail-card">
+<span>💧</span>
+<h4>Humidity</h4>
+<p id="humidity">--%</p>
+</div>
+
+<div class="detail-card">
+<span>💨</span>
+<h4>Wind</h4>
+<p id="wind">-- km/h</p>
+</div>
+
+<div class="detail-card">
+<span>🌧️</span>
+<h4>Rain</h4>
+<p id="rain">--%</p>
+</div>
 
 </section>
 
-<section id="hourlySection" class="forecast-section hidden">
+<!-- HOURLY -->
 
-<h3>Hourly Forecast</h3>
+<section class="section">
 
-<div id="hourlyForecast"></div>
+<div class="section-title">
+Hourly Forecast
+</div>
 
-</section>
-
-<section id="dailySection" class="forecast-section">
-
-<h3>7-Day Forecast</h3>
-
-<div id="dailyForecast"></div>
+<div id="hourlyForecast"
+class="hourly-scroll">
+</div>
 
 </section>
 
-<!-- BOTTOM NAVIGATION -->
+<!-- DAILY -->
+
+<section class="section">
+
+<div class="section-title">
+7 Day Forecast
+</div>
+
+<div id="dailyForecast">
+</div>
+
+</section>
+
+<!-- BOTTOM NAV -->
 
 <nav class="bottom-nav">
 
-<button class="nav-item">
+<button class="nav-item active">
 <i class="fas fa-sun"></i>
 <span>Today</span>
 </button>
@@ -121,13 +142,13 @@ Current weather conditions
 <span>Hourly</span>
 </button>
 
-<button class="nav-item active">
+<button class="nav-item">
 <i class="fas fa-calendar"></i>
 <span>Daily</span>
 </button>
 
 <button class="nav-item">
-<i class="fas fa-satellite-dish"></i>
+<i class="fas fa-satellite"></i>
 <span>Radar</span>
 </button>
 
