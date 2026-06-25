@@ -16,140 +16,170 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
 <!-- HEADER -->
 <header class="app-header">
+  <div class="app-title">
+    <i class="fas fa-cloud-sun"></i>
+    WeatherPro
+  </div>
 
-<div class="app-title">
-<i class="fas fa-cloud-sun"></i>
-WeatherPro
-</div>
-
-<button class="menu-btn">
-<i class="fas fa-bars"></i>
-</button>
-
+  <button class="menu-btn">
+    <i class="fas fa-bars"></i>
+  </button>
 </header>
 
 <!-- SEARCH -->
 <section class="search-section">
+  <input type="text" id="cityInput"
+  placeholder="Search city...">
 
-<input type="text" id="cityInput" placeholder="Search city...">
-
-<button id="searchBtn">
-<i class="fas fa-search"></i>
-</button>
-
-</section>
-
-<!-- MAIN WEATHER CARD -->
-<section class="hero-card">
-
-<div class="city-row">
-
-<h2 id="cityName">Kathmandu</h2>
-
-<div id="weatherIcon" class="hero-icon">☀️</div>
-
-</div>
-
-<h1 id="temperature">--°C</h1>
-
-<p id="description">Loading weather...</p>
-
-</section>
-
-<!-- TODAY DETAILS (ONLY ONCE - FIXED) -->
-<section class="details-grid">
-
-<div class="detail-card">
-<span>🌡️</span>
-<h4>Feels Like</h4>
-<p id="feelsLike">--°</p>
-</div>
-
-<div class="detail-card">
-<span>💧</span>
-<h4>Humidity</h4>
-<p id="humidity">--%</p>
-</div>
-
-<div class="detail-card">
-<span>💨</span>
-<h4>Wind</h4>
-<p id="wind">-- km/h</p>
-</div>
-
-<div class="detail-card">
-<span>🌧️</span>
-<h4>Rain</h4>
-<p id="rain">--%</p>
-</div>
-
+  <button id="searchBtn">
+    <i class="fas fa-search"></i>
+  </button>
 </section>
 
 <!-- TODAY PAGE -->
-<div id="todayPage"></div>
+<div id="todayPage">
 
-<!-- HOURLY PAGE -->
+  <section class="hero-card">
+
+    <div class="city-row">
+      <h2 id="cityName">Kathmandu</h2>
+      <div id="weatherIcon" class="hero-icon">☀️</div>
+    </div>
+
+    <h1 id="temperature">--°C</h1>
+    <p id="description">
+      Loading weather...
+    </p>
+
+  </section>
+
+  <section class="details-grid">
+
+    <div class="detail-card">
+      <span>🌡️</span>
+      <h4>Feels Like</h4>
+      <p id="feelsLike">--°</p>
+    </div>
+
+    <div class="detail-card">
+      <span>💧</span>
+      <h4>Humidity</h4>
+      <p id="humidity">--%</p>
+    </div>
+
+    <div class="detail-card">
+      <span>💨</span>
+      <h4>Wind</h4>
+      <p id="wind">-- km/h</p>
+    </div>
+
+    <div class="detail-card">
+      <span>🌧️</span>
+      <h4>Rain</h4>
+      <p id="rain">--%</p>
+    </div>
+
+  </section>
+
+</div>
+
+<!-- HOURLY -->
 <div id="hourlyPage" style="display:none;">
-<section class="section">
-<div class="section-title">Hourly Forecast</div>
-<div id="hourlyForecast" class="hourly-scroll"></div>
-</section>
+
+  <section class="section">
+    <div class="section-title">
+      Hourly Forecast
+    </div>
+
+    <div id="hourlyForecast"></div>
+  </section>
+
 </div>
 
-<!-- DAILY PAGE -->
+<!-- DAILY -->
 <div id="dailyPage" style="display:none;">
-<section class="section">
-<div class="section-title">7 Day Forecast</div>
-<div id="dailyForecast"></div>
-</section>
+
+  <section class="section">
+    <div class="section-title">
+      7 Day Forecast
+    </div>
+
+    <div id="dailyForecast"></div>
+  </section>
+
 </div>
 
-<!-- RADAR PAGE -->
+<!-- RADAR -->
 <div id="radarPage" style="display:none;">
-<section class="section">
-<div class="section-title">Weather Radar</div>
-<div class="forecast-card">Radar map coming soon</div>
-</section>
+
+  <section class="section">
+
+    <div class="section-title">
+      Weather Radar
+    </div>
+
+    <iframe
+      src="https://embed.windy.com/embed2.html?lat=28.7&lon=80.5&zoom=7&level=surface&overlay=radar"
+      width="100%"
+      height="450"
+      frameborder="0">
+    </iframe>
+
+  </section>
+
 </div>
 
-<!-- CLIMATE PAGE -->
+<!-- CLIMATE -->
 <div id="climatePage" style="display:none;">
-<section class="section">
-<div class="section-title">Climate Statistics</div>
-<div class="forecast-card">Climate information coming soon</div>
-</section>
+
+  <section class="section">
+
+    <div class="section-title">
+      Climate Statistics
+    </div>
+
+    <div id="climateStats"></div>
+
+  </section>
+
 </div>
 
 <!-- BOTTOM NAV -->
 <nav class="bottom-nav">
 
-<button class="nav-item active" data-page="todayPage">
-<i class="fas fa-sun"></i>
-<span>Today</span>
-</button>
+  <button class="nav-item active"
+  data-page="todayPage">
+    <i class="fas fa-sun"></i>
+    <span>Today</span>
+  </button>
 
-<button class="nav-item" data-page="hourlyPage">
-<i class="fas fa-clock"></i>
-<span>Hourly</span>
-</button>
+  <button class="nav-item"
+  data-page="hourlyPage">
+    <i class="fas fa-clock"></i>
+    <span>Hourly</span>
+  </button>
 
-<button class="nav-item" data-page="dailyPage">
-<i class="fas fa-calendar"></i>
-<span>Daily</span>
-</button>
+  <button class="nav-item"
+  data-page="dailyPage">
+    <i class="fas fa-calendar"></i>
+    <span>Daily</span>
+  </button>
 
-<button class="nav-item" data-page="radarPage">
-<i class="fas fa-satellite"></i>
-<span>Radar</span>
-</button>
+  <button class="nav-item"
+  data-page="radarPage">
+    <i class="fas fa-satellite"></i>
+    <span>Radar</span>
+  </button>
 
-<button class="nav-item" data-page="climatePage">
-<i class="fas fa-chart-line"></i>
-<span>Climate</span>
-</button>
+  <button class="nav-item"
+  data-page="climatePage">
+    <i class="fas fa-chart-line"></i>
+    <span>Climate</span>
+  </button>
 
 </nav>
 
 <script src="script.js"></script>
+
 </body>
-  </html>
+</html>
