@@ -1,22 +1,7 @@
-// ===============================
-// WEATHERPRO V2
-// ===============================
-
-// Elements
-const cityInput = document.getElementById("cityInput");
-const searchBtn = document.getElementById("searchBtn");
-
-const cityName = document.getElementById("cityName");
-const temperature = document.getElementById("temperature");
-const description = document.getElementById("description");
-const feelsLike = document.getElementById("feelsLike");
-const humidity = document.getElementById("humidity");
-const wind = document.getElementById("wind");
-const rain = document.getElementById("rain");
-
-// -------------------------------
+// =====================
 // PAGE SWITCHING
-// -------------------------------
+// =====================
+
 const pages = {
   todayPage: document.getElementById("todayPage"),
   hourlyPage: document.getElementById("hourlyPage"),
@@ -25,16 +10,16 @@ const pages = {
   climatePage: document.getElementById("climatePage")
 };
 
-const navButtons = document.querySelectorAll(".nav-item");
+const navButtons =
+document.querySelectorAll(".nav-item");
 
 function showPage(pageId) {
+
   Object.values(pages).forEach(page => {
-    if (page) page.style.display = "none";
+    page.style.display = "none";
   });
 
-  if (pages[pageId]) {
-    pages[pageId].style.display = "block";
-  }
+  pages[pageId].style.display = "block";
 
   navButtons.forEach(btn => {
     btn.classList.remove("active");
@@ -51,48 +36,75 @@ navButtons.forEach(btn => {
   });
 });
 
-showPage("todayPage");
+// =====================
+// WEATHER
+// =====================
 
-// -------------------------------
-// GET COORDINATES
-// -------------------------------
+const cityName =
+document.getElementById("cityName");
+
+const temperature =
+document.getElementById("temperature");
+
+const description =
+document.getElementById("description");
+
+const feelsLike =
+document.getElementById("feelsLike");
+
+const humidity =
+document.getElementById("humidity");
+
+const wind =
+document.getElementById("wind");
+
+const rain =
+document.getElementById("rain");
+
+const cityInput =
+document.getElementById("cityInput");
+
+const searchBtn =
+document.getElementById("searchBtn");
+
+// Get Coordinates
 async function getCoordinates(city) {
-  const response = await fetch(
+
+  const res = await fetch(
     `https://geocoding-api.open-meteo.com/v1/search?name=${city}&count=1`
   );
 
-  const data = await response.json();
+  const data = await res.json();
 
-  if (!data.results || data.results.length === 0) {
-    alert("City not found!");
+  if (!data.results) {
+    alert("City not found");
     return null;
   }
 
   return {
-    name: data.results[0].name,
     lat: data.results[0].latitude,
-    lon: data.results[0].longitude
+    lon: data.results[0].longitude,
+    name: data.results[0].name
   };
 }
 
-// -------------------------------
-// GET WEATHER
-// -------------------------------
+// Get Weather
 async function getWeather(lat, lon) {
-  const response = await fetch(
+
+  const res = await fetch(
     `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,wind_speed_10m,apparent_temperature,precipitation_probability&hourly=temperature_2m,precipitation_probability&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=auto`
   );
 
-  return await response.json();
+  return await res.json();
 }
 
-// -------------------------------
-// UPDATE TODAY
-// -------------------------------
+// Update Today
 function updateToday(data, name) {
+
   const current = data.current;
 
   cityName.textContent = name;
+
   temperature.textContent =
     current.temperature_2m + "°C";
 
@@ -112,71 +124,121 @@ function updateToday(data, name) {
     "Live weather updated ✔";
 }
 
-// -------------------------------
-// HOURLY FORECAST
-// -------------------------------
+// Hourly Forecast
 function loadHourly(data) {
-  const container =
-    document.getElementById("hourlyForecast");
 
-  container.innerHTML = "";
+  const box =
+  document.getElementById(
+    "hourlyForecast"
+  );
+
+  box.innerHTML = "";
 
   for (let i = 0; i < 12; i++) {
-    const time =
-      data.hourly.time[i].slice(11, 16);
 
-    const temp =
-      data.hourly.temperature_2m[i];
-
-    const rain =
-      data.hourly.precipitation_probability[i];
-
-    container.innerHTML += `
+    box.innerHTML += `
       <div class="forecast-card">
-        <h4>${time}</h4>
-        <p>🌡️ ${temp}°C</p>
-        <p>🌧️ ${rain}%</p>
+        <h4>
+          ${data.hourly.time[i].slice(11,16)}
+        </h4>
+
+        <p>
+          🌡️
+          ${data.hourly.temperature_2m[i]}°C
+        </p>
+
+        <p>
+          🌧️
+          ${data.hourly.precipitation_probability[i]}%
+        </p>
       </div>
     `;
   }
 }
 
-// -------------------------------
-// DAILY FORECAST
-// -------------------------------
+// Daily Forecast
 function loadDaily(data) {
-  const container =
-    document.getElementById("dailyForecast");
 
-  container.innerHTML = "";
+  const box =
+  document.getElementById(
+    "dailyForecast"
+  );
 
-  for (let i = 0; i < data.daily.time.length; i++) {
-    const date = data.daily.time[i];
-    const max =
-      data.daily.temperature_2m_max[i];
+  box.innerHTML = "";
 
-    const min =
-      data.daily.temperature_2m_min[i];
+  for (
+    let i = 0;
+    i < data.daily.time.length;
+    i++
+  ) {
 
-    const rain =
-      data.daily
-        .precipitation_probability_max[i];
-
-    container.innerHTML += `
+    box.innerHTML += `
       <div class="forecast-card">
-        <h4>${date}</h4>
-        <p>🌡️ ${max}°C / ${min}°C</p>
-        <p>🌧️ ${rain}% chance of rain</p>
+
+        <h4>
+          ${data.daily.time[i]}
+        </h4>
+
+        <p>
+          🌡️
+          ${data.daily.temperature_2m_max[i]}°
+          /
+          ${data.daily.temperature_2m_min[i]}°
+        </p>
+
+        <p>
+          🌧️
+          ${data.daily.precipitation_probability_max[i]}%
+        </p>
+
       </div>
     `;
   }
 }
 
-// -------------------------------
-// LOAD CITY WEATHER
-// -------------------------------
+// Climate Statistics
+function loadClimate(data) {
+
+  document.getElementById(
+    "climateStats"
+  ).innerHTML = `
+
+    <div class="forecast-card">
+
+      <p>
+        🌡️ Temperature:
+        ${data.current.temperature_2m}°C
+      </p>
+
+      <p>
+        🤗 Feels Like:
+        ${data.current.apparent_temperature}°C
+      </p>
+
+      <p>
+        💧 Humidity:
+        ${data.current.relative_humidity_2m}%
+      </p>
+
+      <p>
+        💨 Wind:
+        ${data.current.wind_speed_10m} km/h
+      </p>
+
+      <p>
+        🌧️ Rain Probability:
+        ${data.current.precipitation_probability}%
+      </p>
+
+    </div>
+  `;
+}
+
+// Load City
 async function loadCity(city) {
+
   try {
+
     description.textContent =
       "Loading weather...";
 
@@ -194,33 +256,30 @@ async function loadCity(city) {
     updateToday(data, coords.name);
     loadHourly(data);
     loadDaily(data);
-  } catch (error) {
-    console.log(error);
+    loadClimate(data);
 
+  } catch (e) {
     description.textContent =
       "Unable to load weather ❌";
   }
 }
 
-// -------------------------------
-// SEARCH BUTTON
-// -------------------------------
+// Search
 searchBtn.addEventListener(
   "click",
   () => {
+
     const city =
       cityInput.value.trim();
 
-    if (!city) {
-      alert("Enter a city name");
-      return;
-    }
+    if (!city) return;
 
     loadCity(city);
   }
 );
 
-// -------------------------------
-// DEFAULT CITY
-// -------------------------------
+// Default Weather
 loadCity("Kathmandu");
+
+// Open Today page
+showPage("todayPage");
